@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "4ca42c67-6171-40f1-89d0-e0377390ffd6",
+		"name": "CreateUser_DataDrivern",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36784753",
+		"_collection_link": "https://hari-team-3823.postman.co/workspace/hari-team-Workspace~0118a7df-9ad1-472b-8f8d-8575543a525d/collection/36784753-4ca42c67-6171-40f1-89d0-e0377390ffd6?action=share&source=collection_link&creator=36784753"
+	},
+	"item": [
+		{
+			"name": "createUser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"This is PreRequest Script\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"This is post re Script\");\r",
+							"pm.test(\r",
+							"    \"response data validation\",function()\r",
+							"    {\r",
+							"        pm.expect(pm.response.json().name).to.eql(pm.iterationData.get(\"name\"))\r",
+							"    }\r",
+							")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{name}}\",\r\n    \"job\":\"{{job}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
